@@ -1,0 +1,10 @@
+.container
+{
+    width: 200px;
+}
+
+button.evento-day
+{
+    background: green;
+    border-radius: 100%;
+}

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "iasgestao": {
+      "hosting": {
+        "frontend": [
+          "iasgestao"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "iasgestao"
+  }
+}

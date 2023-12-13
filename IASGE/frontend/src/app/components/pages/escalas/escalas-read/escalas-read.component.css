@@ -1,0 +1,9 @@
+.container
+{
+    width: 200px;
+}
+
+button.escala-day {
+    background: orange;
+    border-radius: 100%;
+}

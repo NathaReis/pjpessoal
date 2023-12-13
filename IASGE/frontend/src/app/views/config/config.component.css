@@ -1,0 +1,12 @@
+.btn_logout
+{
+    border: none;
+    padding: 15px;
+    background-color: var(--primaryColor);
+    color: var(--secondColor);
+    border-radius: 30px;
+    box-shadow: 5px 5px 10px #0003;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

@@ -1,0 +1,72 @@
+.card
+{
+    font-family: 'Caveat', cursive;
+    background-color: #eee;
+    box-shadow: 10px 10px 15px #0002;
+    height: 20vh;
+    padding: 10vh;
+    display: grid;
+    align-items: center;
+}
+
+.card .card-title
+{
+    font-size: 2rem;
+    text-shadow: 2px 2px 3px #0004;
+    letter-spacing: 3px;
+    font-weight: 500;
+}
+
+.card-list
+{
+    display: grid;
+    align-items: center;
+}
+
+.card .card-list .li 
+{
+    color: var(--color);
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 5px #fff2;
+    margin: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.card .slogan 
+{
+    font-size: 1.9rem;
+    text-align: center;
+}
+
+.card .slogan mat-icon 
+{
+    margin-left: 5px;
+    color: rgb(255, 32, 32);
+}
+
+.parallax
+{
+    width: 100vw;
+    height: 60vh;
+}
+#gerencie
+{
+    background: url('../../../assets/gerencie.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+#organize
+{
+    background: url('../../../assets/organize.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+#compartilhe
+{
+    background: url('../../../assets/compartilhe.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
