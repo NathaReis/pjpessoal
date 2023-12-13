@@ -1,6 +1,28 @@
 <div class="container center">
-    <button mat-button routerLink="/departamentos">
-        <mat-icon>assignment_return</mat-icon>
-        Voltar
-    </button>
+    <div>
+        <div>
+            <div class="card shadow">
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <h4 class="text-dark text-muted">Adicionar</h4>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Nome</label>
+                          <input type="text" class="form-control" name="first_name" [(ngModel)]="first_name">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Sobrenome</label>
+                          <input type="text" class="form-control" name="last_name" [(ngModel)]="last_name">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Password</label>
+                          <input type="password" class="form-control" name="password" [(ngModel)]="password">
+                        </div>
+                        <button type="button" class="btn" (click)="addUser()">Adicionar</button>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

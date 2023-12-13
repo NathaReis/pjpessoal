@@ -10,6 +10,9 @@ import { MatTableModule } from '@angular/material/table';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { MatPaginatorModule} from '@angular/material/paginator';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 //Components
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +34,11 @@ import { EventosCreateComponent } from './components/pages/eventos/eventos-creat
 import { EventosReadComponent } from './components/pages/eventos/eventos-read/eventos-read.component';
 import { EventosDeleteComponent } from './components/pages/eventos/eventos-delete/eventos-delete.component';
 
+import { DepartamentosComponent } from './views/departamentos/departamentos.component';
+import { DepartamentosCreateComponent } from './components/pages/departamentos/departamentos-create/departamentos-create.component';
+import { DepartamentosReadComponent } from './components/pages/departamentos/departamentos-read/departamentos-read.component';
+import { DepartamentosEditComponent } from './components/pages/departamentos/departamentos-edit/departamentos-edit.component';
+
 import { LoginComponent } from './components/pages/login/login.component';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { FormsModule } from '@angular/forms';
@@ -43,9 +51,6 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { ambiente } from 'src/ambiente/ambiente';
-import { DepartamentosComponent } from './views/departamentos/departamentos.component';
-import { DepartamentosCreateComponent } from './components/pages/departamentos/departamentos-create/departamentos-create.component';
-import { DepartamentosReadComponent } from './components/pages/departamentos/departamentos-read/departamentos-read.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +72,7 @@ import { DepartamentosReadComponent } from './components/pages/departamentos/dep
     DepartamentosComponent,
     DepartamentosCreateComponent,
     DepartamentosReadComponent,
+    DepartamentosEditComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(ambiente.firebaseConfig),
@@ -83,6 +89,9 @@ import { DepartamentosReadComponent } from './components/pages/departamentos/dep
     MatPaginatorModule,
     MatMenuModule,
     FormsModule,
+    MatSelectModule,
+    MatInputModule,
+    MatFormFieldModule,
     MatButtonModule,
     provideFirebaseApp(() => initializeApp({"projectId":"iasgestao","appId":"1:634292682476:web:38ff865f29151abb53efc9","storageBucket":"iasgestao.appspot.com","apiKey":"AIzaSyDM_8ffyG8YjOvCh2mtu9bO8iYYMBqIpk0","authDomain":"iasgestao.firebaseapp.com","messagingSenderId":"634292682476"})),
     provideAuth(() => getAuth()),

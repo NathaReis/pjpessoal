@@ -9,25 +9,25 @@ export class DataService {
 
   constructor(private afs : AngularFirestore) { }
 
+  //USER
+  
   // add user
   addUser(user: User)
   {
     user.id = this.afs.createId();
-    return this.afs.collection('/Users').add(user);
+    return this.afs.collection('/users').add(user);
   }
-
   // get all users
   getAllUsers()
   {
-    return this.afs.collection('/Users').snapshotChanges();
+    console.log('GetAllUsers')
+    return this.afs.collection('/users').snapshotChanges();
   }
-
   // delete user
   deleteUser(user: User)
   {
-    return this.afs.doc('/Users/'+user.id).delete();
+    return this.afs.doc('/users/'+user.id).delete();
   }
-
   // update user
   updateUser(user: User)
   {

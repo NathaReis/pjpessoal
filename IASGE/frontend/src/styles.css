@@ -37,6 +37,18 @@ body
     align-items: center;
     justify-content: center;
 }
+.container::-webkit-scrollbar
+{
+    width: 10px;
+}
+.container::-webkit-scrollbar-thumb
+{
+    background-color: var(--primaryColor);
+}
+.container::-webkit-scrollbar-track
+{
+    background-color: var(--secondColor);
+}
 
 
 /*BUTTONS*/
