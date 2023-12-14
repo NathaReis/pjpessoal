@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <form>
                         <div class="mb-3">
-                            <h4 class="text-dark text-muted">Atualizar</h4>
+                            <h4 class="text-dark text-muted">Adicionar</h4>
                         </div>
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Nome</label>
@@ -23,13 +23,13 @@
                         <mat-form-field>
                           <mat-label>Perfil</mat-label>
                           <mat-select  name="perfil" [(ngModel)]="perfil">
-                            <mat-option value="admin">Admin</mat-option>
-                            <mat-option value="gerente">Gerente</mat-option>
-                            <mat-option value="diretor">Diretor</mat-option>
+                            <mat-option value="" selected>Escolha um perfil</mat-option>
+                            <mat-option value="associado">Associado</mat-option>
+                            <mat-option value="editor">Editor</mat-option>
                           </mat-select>
                         </mat-form-field>
                         
-                        <button type="button" class="btn" (click)="updateUser()">Atualizar</button>
+                        <button type="button" class="btn" (click)="addUser()">Adicionar</button>
                       </form>
                 </div>
             </div>

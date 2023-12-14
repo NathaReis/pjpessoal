@@ -3,19 +3,19 @@ import { DataService } from 'src/app/components/services/data.service';
 import { HeaderService } from 'src/app/components/services/header.service';
 
 @Component({
-  selector: 'app-departamentos-create',
-  templateUrl: './departamentos-create.component.html',
-  styleUrls: ['./departamentos-create.component.css']
+  selector: 'app-associados-create',
+  templateUrl: './associados-create.component.html',
+  styleUrls: ['./associados-create.component.css']
 })
-export class DepartamentosCreateComponent {
+export class AssociadosCreateComponent {
 
   constructor( 
     private data : DataService,
     private headerService: HeaderService) {
     headerService.headerData = {
-      title: 'Departamentos',
-      icon: 'house',
-      routerLink: 'departamentos'
+      title: 'Associados',
+      icon: 'people',
+      routerLink: 'associados'
     }
   }
   userObj = {
@@ -61,5 +61,4 @@ export class DepartamentosCreateComponent {
     }
     this.resetForm()
   }
-
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { HeaderService } from '../../services/header.service';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +10,18 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  email : string = '';
+  user_name : string = '';
   password : string = '';
 
-  constructor(private auth : AuthService, private router : Router) {}
+  constructor(
+    private auth : AuthService, 
+    private router : Router,
+    private headerService: HeaderService) {
+    headerService.headerData = {
+      title: 'Login',
+      icon: 'login',
+      routerLink: 'login'
+    }}
 
   ngOnInit(): void {
 
@@ -22,9 +31,9 @@ export class LoginComponent implements OnInit {
 
   login()
   {
-    if(this.email == '')
+    if(this.user_name == '')
     {
-      alert('Por favor, digite o email');
+      alert('Por favor, digite o usuário');
       return '';
     }
 
@@ -34,16 +43,9 @@ export class LoginComponent implements OnInit {
       return '';
     }
 
-    const email_formated = `${this.email.toLowerCase()}@iasge.com`
-    this.auth.login(email_formated,this.password);
-    this.email = '';
+    this.auth.login(this.user_name,this.password);
+    this.user_name = '';
     this.password = '';
     return '';
   }
-
-  getUser()
-  {
-    console.log(this.auth.readUser())
-  }
-
 }

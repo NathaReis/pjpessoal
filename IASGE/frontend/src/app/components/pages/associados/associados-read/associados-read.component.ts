@@ -1,27 +1,27 @@
-import { MatDialog } from '@angular/material/dialog';
-import { User } from '../../../models/user';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { User } from 'src/app/components/models/user';
 import { DataService } from 'src/app/components/services/data.service';
 import { HeaderService } from 'src/app/components/services/header.service';
 import { DialogConfirmationComponent } from 'src/app/components/template/dialog-confirmation/dialog-confirmation.component';
 
 @Component({
-  selector: 'app-departamentos-read',
-  templateUrl: './departamentos-read.component.html',
-  styleUrls: ['./departamentos-read.component.css']
+  selector: 'app-associados-read',
+  templateUrl: './associados-read.component.html',
+  styleUrls: ['./associados-read.component.css']
 })
-export class DepartamentosReadComponent implements AfterViewInit, OnInit{
+export class AssociadosReadComponent implements AfterViewInit, OnInit{
 
   constructor(
     private data: DataService,
     private dialog: MatDialog,
     private headerService: HeaderService) {
     headerService.headerData = {
-      title: 'Departamentos',
-      icon: 'house',
-      routerLink: 'departamentos'
+      title: 'Associados',
+      icon: 'people',
+      routerLink: 'associados'
     }
   }
 
@@ -52,7 +52,7 @@ export class DepartamentosReadComponent implements AfterViewInit, OnInit{
             data.id = e.payload.doc.id;
             return data;
           })
-        this.usersList = this.usersList.filter(user => user.perfil != 'associado' && user.perfil != 'editor')
+        this.usersList = this.usersList.filter(user => user.perfil == 'associado' || user.perfil == 'editor')
         //Passa a lista para o data usado na table
         this.dataSource = new MatTableDataSource<User>(this.usersList);
       }, err => 

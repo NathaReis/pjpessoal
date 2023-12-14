@@ -14,24 +14,37 @@ export class DataService {
   // add user
   addUser(user: User)
   {
-    user.id = this.afs.createId();
+    //user.id = this.afs.createId();
     return this.afs.collection('/users').add(user);
   }
   // get all users
   getAllUsers()
   {
-    console.log('GetAllUsers')
     return this.afs.collection('/users').snapshotChanges();
   }
-  // delete user
-  deleteUser(user: User)
+  // get one users
+  getUser(id: string)
   {
-    return this.afs.doc('/users/'+user.id).delete();
+    return this.afs.doc(`/users/${id}`).get();
+  }
+  // delete user
+  deleteUser(id: string)
+  {
+    console.log('Delete user ' + id)
+    return this.afs.doc(`/users/${id}`).delete();
   }
   // update user
-  updateUser(user: User)
+  updateUser(user: User, id: string)
   {
-    this.deleteUser(user);
     this.addUser(user);
+    this.deleteUser(id);
+    //this.addUser(user);
+  }
+
+  //PERFIL
+  // get all perfis
+  getAllPerfis()
+  {
+    return this.afs.collection('/perfis').snapshotChanges();
   }
 }

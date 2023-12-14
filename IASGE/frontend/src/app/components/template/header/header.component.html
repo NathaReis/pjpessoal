@@ -22,15 +22,15 @@
                 <mat-icon>dashboard</mat-icon>
                 <span>Escalas</span>
             </button>
-            <button mat-menu-item routerLink="eventos">
+            <button *ngIf="eventos" mat-menu-item routerLink="eventos">
                 <mat-icon>event</mat-icon>
                 <span>Eventos</span>
             </button>
-            <button mat-menu-item routerLink="associados">
+            <button *ngIf="associados" mat-menu-item routerLink="associados">
                 <mat-icon>people</mat-icon>
                 <span>Associados</span>
             </button>
-            <button mat-menu-item routerLink="departamentos">
+            <button *ngIf="departamentos" mat-menu-item routerLink="departamentos">
                 <mat-icon>house</mat-icon>
                 <span>Departamentos</span>
             </button>

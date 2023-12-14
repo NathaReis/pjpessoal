@@ -1,0 +1,9 @@
+.yes
+{
+    background: var(--neutroColor);
+}
+.no 
+{
+    color: var(--secondColor);
+    background: var(--warnColor);
+}

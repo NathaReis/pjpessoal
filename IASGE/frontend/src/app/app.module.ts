@@ -13,6 +13,8 @@ import { MatPaginatorModule} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 //Components
 import { AppRoutingModule } from './app-routing.module';
@@ -40,9 +42,10 @@ import { DepartamentosReadComponent } from './components/pages/departamentos/dep
 import { DepartamentosEditComponent } from './components/pages/departamentos/departamentos-edit/departamentos-edit.component';
 
 import { LoginComponent } from './components/pages/login/login.component';
-import { RegisterComponent } from './components/pages/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { ConfigComponent } from './views/config/config.component';
+
+import { DialogConfirmationComponent } from './components/template/dialog-confirmation/dialog-confirmation.component';
 
 //Fire
 import { AngularFireModule } from '@angular/fire/compat';
@@ -51,6 +54,10 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { ambiente } from 'src/ambiente/ambiente';
+import { AssociadosComponent } from './views/associados/associados.component';
+import { AssociadosReadComponent } from './components/pages/associados/associados-read/associados-read.component';
+import { AssociadosEditComponent } from './components/pages/associados/associados-edit/associados-edit.component';
+import { AssociadosCreateComponent } from './components/pages/associados/associados-create/associados-create.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +72,6 @@ import { ambiente } from 'src/ambiente/ambiente';
     EscalasCreateComponent,
     EscalasDeleteComponent,
     LoginComponent,
-    RegisterComponent,
     ConfigComponent,
     HeaderComponent,
     BodyComponent,
@@ -73,6 +79,11 @@ import { ambiente } from 'src/ambiente/ambiente';
     DepartamentosCreateComponent,
     DepartamentosReadComponent,
     DepartamentosEditComponent,
+    DialogConfirmationComponent,
+    AssociadosComponent,
+    AssociadosReadComponent,
+    AssociadosEditComponent,
+    AssociadosCreateComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(ambiente.firebaseConfig),
@@ -92,7 +103,9 @@ import { ambiente } from 'src/ambiente/ambiente';
     MatSelectModule,
     MatInputModule,
     MatFormFieldModule,
+    MatDialogModule,
     MatButtonModule,
+    MatCheckboxModule,
     provideFirebaseApp(() => initializeApp({"projectId":"iasgestao","appId":"1:634292682476:web:38ff865f29151abb53efc9","storageBucket":"iasgestao.appspot.com","apiKey":"AIzaSyDM_8ffyG8YjOvCh2mtu9bO8iYYMBqIpk0","authDomain":"iasgestao.firebaseapp.com","messagingSenderId":"634292682476"})),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

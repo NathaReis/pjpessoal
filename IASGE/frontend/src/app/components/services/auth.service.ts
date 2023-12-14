@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,80 +11,61 @@ export class AuthService {
   constructor(
     private fireauth : AngularFireAuth, 
     private router : Router,
-    private firestore : AngularFirestore
+    private data : DataService
     ) { }
   
   // login metodo
-  login(email : string, password: string)
+  login(user_name : string, password: string)
   {
-
-    this.fireauth.signInWithEmailAndPassword(email,password)
-    .then(() =>
-    {
-      localStorage.setItem('token', 'true');
-      this.router.navigate(['home'])
-    }, err => 
-    {
-      alert(err.message);
-      this.router.navigate(['login']);
-    })
-  }
-
-  readUser(): Observable<any>
-  {
-    return this.firestore.collection('Users').snapshotChanges();
-  }
-
-  // register metodo
-  register(email: string, password: string)
-  {
-    this.fireauth.createUserWithEmailAndPassword(email,password)
-    .then(() =>
-    {
-      alert('Register correct');
-      this.router.navigate(['login'])
-    }, err => 
-    {
-      alert(err.message);
-      this.router.navigate(['register']);
-    })
+    this.data.getAllUsers().subscribe(res =>
+      {
+        //Mapeia o resultado
+        const users = res.map((e: any) =>
+          {
+            const data = e.payload.doc.data();
+            data.id = e.payload.doc.id;
+            return data;
+          })
+        
+        //Se user exists or no
+        const user = users.filter(user => user.user_name == user_name && user.password == password)
+        user.length > 0 
+        ? this.logar(user[0])
+        : this.logout()
+      }, err => 
+      {
+        //Mensagem de erro
+        alert(`Erro de login: ${err}`)
+      })
   }
 
   // Logout
   logout() 
   {
-    this.fireauth.signOut()
-    .then(() =>
-    {
-      localStorage.removeItem('token');
-      this.router.navigate(['login']);
-    }, err =>
-    {
-      alert(err.message);
-    })
+    localStorage.removeItem('logado');
+    this.router.navigate(['login']);
+  }
+  // Login
+  logar(user: any) 
+  {
+    localStorage.setItem('logado', user.perfil);
+    this.router.navigate(['home']);
   }
 
   // Segurança
   auth_guard()
   {
-    this.fireauth.onAuthStateChanged(user =>
-      {
-        if(!user)
-        {
-          this.logout()
-        }
-      })
+    if(!localStorage.getItem('logado'))
+    {
+      this.router.navigate(['login']);
+    }
   }
   // Login
   isLogin()
   {
-    this.fireauth.onAuthStateChanged(user =>
-      {
-        if(user)
-        {
-          localStorage.setItem('token', 'true');
-          this.router.navigate(['home'])
-        }
-      })
+    if(localStorage.getItem('logado'))
+    {
+      this.router.navigate(['home'])
+    }
   }
 }

@@ -8,9 +8,9 @@ import { Injectable } from '@angular/core';
 export class HeaderService {
 
   _headerData = new BehaviorSubject<HeaderTitleData>({
-    title: 'Login',
-    icon: 'login',
-    routerLink: 'login'
+    title: '',
+    icon: '',
+    routerLink: ''
   });
 
   constructor() { }
