@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { count } from 'firebase/firestore';
 import { User } from 'src/app/components/models/user';
 import { DataService } from 'src/app/components/services/data.service';
 import { HeaderService } from 'src/app/components/services/header.service';
@@ -102,11 +103,40 @@ export class AssociadosMyreadComponent implements AfterViewInit, OnInit{
     });
   }
 
-  removerAssociadoEquipe(user: User)
+  posOfDepartamento(user: User): number
   {
     let master_id = String(localStorage.getItem('user_id'));
     let master_name = String(localStorage.getItem('user_name'));
     let master_obj = {id: master_id, name: master_name};
+
+    for (let key in user.departamentos) {
+
+      let obj = {
+          key: key,
+          value: user.departamentos[+key]
+      };
+
+      console.log(`Obj: ${obj.value}\nMaster: ${master_obj}`)
+      if(obj.value == master_obj)
+      {
+        console.log(key)
+        return +key
+      }
+    }
+    return -1;
+  }
+
+  removeOfDepartamento(user: User, pos: number)
+  {
+    const newDepartamentosList = user.departamentos?.slice(pos,1);
+    console.log(`Pos: ${pos}\nLista: ${newDepartamentosList}`)
+  }
+
+  removerAssociadoEquipe(user: User)
+  {
+    const pos = +this.posOfDepartamento(user);
+    //this.removeOfDepartamento(user, pos)
+    const departamentos = user.departamentos;
     let userObj = {
       id: user.id,
       first_name: user.first_name,
@@ -114,7 +144,7 @@ export class AssociadosMyreadComponent implements AfterViewInit, OnInit{
       password: user.password,
       perfil: user.perfil,
       user_name: user.user_name,
-      departamentos: user.departamentos?.indexOf(master_obj)
+      departamentos: departamentos
     }
 
     const dialogRef = this.dialog.open(DialogConfirmationComponent, {
