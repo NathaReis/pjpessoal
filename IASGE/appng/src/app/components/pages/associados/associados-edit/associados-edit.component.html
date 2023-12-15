@@ -1,0 +1,33 @@
+<div class="container center">
+    <div>
+        <div>
+            <div class="card shadow">
+                <div class="card-body">
+                      <form>
+                        <div class="mb-3">
+                            <h4 class="text-dark text-muted">Atualizar</h4>
+                        </div>
+                        <mat-form-field>
+                          <mat-label>Nome</mat-label>
+                          <input matInput #input minlength="10" placeholder="Ex. nome.sobrenome" name="first_name" [(ngModel)]="first_name">
+                        </mat-form-field>     
+                        <mat-form-field>
+                          <mat-label>Sobrenome</mat-label>
+                          <input matInput #input minlength="10" placeholder="Ex. nome.sobrenome" name="last_name" [(ngModel)]="last_name">
+                        </mat-form-field>     
+    
+                        <mat-form-field>
+                          <mat-label>Editor</mat-label>
+                          <mat-select  name="editor" [(ngModel)]="editor">
+                            <mat-option value="false">Não</mat-option>
+                            <mat-option value="true">Sim</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        
+                        <button type="button" class="btn" (click)="updateUser()">Atualizar</button>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

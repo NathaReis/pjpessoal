@@ -1,0 +1,42 @@
+<div class="container center">
+    <div>
+        <div>
+            <div class="card shadow">
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <h4 class="text-dark text-muted">Adicionar</h4>
+                        </div>
+                        <mat-form-field>
+                          <mat-label>Nome</mat-label>
+                          <input matInput #input minlength="10" placeholder="Ex. nome.sobrenome" name="first_name" [(ngModel)]="first_name">
+                        </mat-form-field>     
+                        <mat-form-field>
+                          <mat-label>Sobrenome</mat-label>
+                          <input matInput #input minlength="10" placeholder="Ex. nome.sobrenome" name="last_name" [(ngModel)]="last_name">
+                        </mat-form-field>     
+                        <mat-form-field>
+                          <mat-label>Senha</mat-label>
+                          <input matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="password">
+                          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                          </button>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                          <mat-label>Perfil</mat-label>
+                          <mat-select  name="perfil" [(ngModel)]="perfil">
+                            <mat-option value="" selected>Escolha um perfil</mat-option>
+                            <mat-option value="admin">Admin</mat-option>
+                            <mat-option value="gerente">Gerente</mat-option>
+                            <mat-option value="diretor">Diretor</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        
+                        <button type="button" class="btn" (click)="addUser()">Adicionar</button>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

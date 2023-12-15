@@ -1,0 +1,103 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Dhurjati&display=swap');
+/* font-family: 'Dhurjati', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+/* font-family: 'Caveat', cursive; */
+
+:root 
+{
+    --primaryColor: #003c5a;
+    --secondColor: #eee;
+    --warnColor: #e35e6b;
+    --neutroColor: #afff79;
+    --grayColor: #333;
+}
+
+/*PAGES*/
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body 
+{
+    position: relative;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.container
+{
+    width: 100vw;
+    height: 90vh;
+}
+.center
+{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+.container::-webkit-scrollbar
+{
+    width: 10px;
+}
+.container::-webkit-scrollbar-thumb
+{
+    background-color: var(--primaryColor);
+}
+.container::-webkit-scrollbar-track
+{
+    background-color: var(--secondColor);
+}
+
+
+/*BUTTONS*/
+button.add
+{
+    background-color: var(--primaryColor);
+}
+button.delete
+{
+    background-color: var(--erroColor);
+}
+button.edit
+{
+    background-color: var(--neutroColor);
+}
+button.view
+{
+    background-color: var(--grayColor);
+}
+
+/*ICONS*/
+mat-icon.delete
+{
+    cursor: pointer;
+    color: var(--warnColor);
+}
+mat-icon.edit
+{
+    cursor: pointer;
+    color: var(--neutroColor);
+}
+mat-icon.view
+{
+    cursor: pointer;
+    color: var(--grayColor);
+}
+mat-icon.add
+{
+    cursor: pointer;
+    color: var(--primaryColor);
+}
+
+/*FORM*/
+form 
+{
+    display: grid;
+}
+form button.btn
+{
+    color: var(--secondColor);
+    background-color: var(--primaryColor);
+}

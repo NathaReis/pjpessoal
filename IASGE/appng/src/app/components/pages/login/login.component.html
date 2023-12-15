@@ -1,0 +1,27 @@
+<div class="container center">
+    <div>
+        <div>
+            <div class="card shadow">
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <h4 class="text-dark text-muted">Login</h4>
+                        </div>
+                        <mat-form-field>
+                            <mat-label>Seu usuário</mat-label>
+                            <input matInput #input minlength="10" placeholder="Ex. nome.sobrenome" name="user_name" [(ngModel)]="user_name">
+                        </mat-form-field>                        
+                        <mat-form-field>
+                            <mat-label>Sua senha</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="password">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <button type="button" class="btn" (click)="login()">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
