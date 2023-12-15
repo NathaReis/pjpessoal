@@ -52,7 +52,9 @@ export class DepartamentosReadComponent implements AfterViewInit, OnInit{
             data.id = e.payload.doc.id;
             return data;
           })
-        this.usersList = this.usersList.filter(user => user.perfil != 'associado' && user.perfil != 'editor')
+        const noass = this.usersList.filter(user => user.perfil != 'associado')
+        const ass = this.usersList.filter(user => user.perfil == 'associado')
+        this.usersList = noass.concat(ass);//Ordernar a lista de Diretor e admin emcima para associados
         //Passa a lista para o data usado na table
         this.dataSource = new MatTableDataSource<User>(this.usersList);
       }, err => 

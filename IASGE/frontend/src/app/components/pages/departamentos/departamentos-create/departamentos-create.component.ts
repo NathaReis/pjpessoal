@@ -58,8 +58,8 @@ export class DepartamentosCreateComponent {
       this.userObj.perfil = this.perfil;
       this.userObj.user_name = `${this.first_name.toLowerCase()}.${this.last_name.toLowerCase()}`;
       this.data.addUser(this.userObj)
+      this.resetForm()
     }
-    this.resetForm()
   }
 
 }

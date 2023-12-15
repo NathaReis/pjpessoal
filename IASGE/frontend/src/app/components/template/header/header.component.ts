@@ -41,7 +41,6 @@ export class HeaderComponent implements OnInit{
             data.id = e.payload.doc.id;
             return data;
           })
-          console.log(localStorage.getItem('logado'))
         const perfil = perfis.filter(perfil => localStorage.getItem('logado') == perfil.type)
         this.pages_perfil(perfil[0])
       }, err => 

@@ -58,6 +58,7 @@ import { AssociadosComponent } from './views/associados/associados.component';
 import { AssociadosReadComponent } from './components/pages/associados/associados-read/associados-read.component';
 import { AssociadosEditComponent } from './components/pages/associados/associados-edit/associados-edit.component';
 import { AssociadosCreateComponent } from './components/pages/associados/associados-create/associados-create.component';
+import { AssociadosMyreadComponent } from './components/pages/associados/associados-myread/associados-myread.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { AssociadosCreateComponent } from './components/pages/associados/associa
     AssociadosReadComponent,
     AssociadosEditComponent,
     AssociadosCreateComponent,
+    AssociadosMyreadComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(ambiente.firebaseConfig),

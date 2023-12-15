@@ -23,14 +23,14 @@ export class AssociadosCreateComponent {
     first_name: '',
     last_name: '',
     password: '',
-    perfil: '',
+    perfil: 'associado',
     user_name: '',
+    departamentos: [],
   }
   id: string = '';
   first_name: string = '';
   last_name: string = '';
   password: string = '';
-  perfil: string = '';
   user_name: string = '';
 
   resetForm()
@@ -39,15 +39,15 @@ export class AssociadosCreateComponent {
     this.first_name = '';
     this.last_name = '';
     this.password = '';
-    this.perfil = '';
     this.user_name = '';
   }
 
   addUser()
   {
-    if(this.first_name == '' || this.last_name == '' || this.password == '' || this.perfil == '')
+    if(this.first_name == '' || this.last_name == '' || this.password == '')
     {
       alert('Preencha todos os campos');
+      console.log(localStorage.getItem('user'))
     }
     else 
     {
@@ -55,10 +55,10 @@ export class AssociadosCreateComponent {
       this.userObj.first_name = this.first_name;
       this.userObj.last_name = this.last_name;
       this.userObj.password = this.password;
-      this.userObj.perfil = this.perfil;
       this.userObj.user_name = `${this.first_name.toLowerCase()}.${this.last_name.toLowerCase()}`;
+      this.userObj.departamentos = [],
       this.data.addUser(this.userObj)
+      this.resetForm()
     }
-    this.resetForm()
   }
 }

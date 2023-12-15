@@ -8,11 +8,11 @@ import { HeaderService } from 'src/app/components/services/header.service';
 import { DialogConfirmationComponent } from 'src/app/components/template/dialog-confirmation/dialog-confirmation.component';
 
 @Component({
-  selector: 'app-associados-read',
-  templateUrl: './associados-read.component.html',
-  styleUrls: ['./associados-read.component.css']
+  selector: 'app-associados-myread',
+  templateUrl: './associados-myread.component.html',
+  styleUrls: ['./associados-myread.component.css']
 })
-export class AssociadosReadComponent implements AfterViewInit, OnInit{
+export class AssociadosMyreadComponent implements AfterViewInit, OnInit{
 
   constructor(
     private data: DataService,
@@ -53,7 +53,7 @@ export class AssociadosReadComponent implements AfterViewInit, OnInit{
             return data;
           })
           this.usersList = this.usersList.filter(this.isPerfilAssociado)
-          this.usersList = this.notMyAssociado(this.usersList)
+          this.usersList = this.isMyAssociado(this.usersList)
           //Passa a lista para o data usado na table
         this.dataSource = new MatTableDataSource<User>(this.usersList);
       }, err => 
@@ -68,7 +68,7 @@ export class AssociadosReadComponent implements AfterViewInit, OnInit{
     return user.perfil == 'associado'
   }
 
-  notMyAssociado(users: User[])
+  isMyAssociado(users: User[])
   {
     let master_id = localStorage.getItem('user_id');
     let newList: User[] = [];
@@ -82,7 +82,7 @@ export class AssociadosReadComponent implements AfterViewInit, OnInit{
               isAssociaction++;
             }
           })
-        isAssociaction == 0 ? newList.push(user) : null;
+        isAssociaction != 0 ? newList.push(user) : null;
         isAssociaction = 0;
       })
     return newList;
@@ -102,7 +102,7 @@ export class AssociadosReadComponent implements AfterViewInit, OnInit{
     });
   }
 
-  addAssociadoEquipe(user: User)
+  removerAssociadoEquipe(user: User)
   {
     let master_id = String(localStorage.getItem('user_id'));
     let master_name = String(localStorage.getItem('user_name'));
@@ -114,7 +114,7 @@ export class AssociadosReadComponent implements AfterViewInit, OnInit{
       password: user.password,
       perfil: user.perfil,
       user_name: user.user_name,
-      departamentos: user.departamentos?.push(master_obj)
+      departamentos: user.departamentos?.indexOf(master_obj)
     }
 
     const dialogRef = this.dialog.open(DialogConfirmationComponent, {
@@ -124,7 +124,8 @@ export class AssociadosReadComponent implements AfterViewInit, OnInit{
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if(result)
       {
-        this.data.updateUser(user, String(user.id));
+        console.log(userObj);
+        //this.data.updateUser(user, String(user.id));
       }
     });
   }

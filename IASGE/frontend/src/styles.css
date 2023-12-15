@@ -72,17 +72,21 @@ button.view
 /*ICONS*/
 mat-icon.delete
 {
+    cursor: pointer;
     color: var(--warnColor);
 }
 mat-icon.edit
 {
+    cursor: pointer;
     color: var(--neutroColor);
 }
 mat-icon.view
 {
+    cursor: pointer;
     color: var(--grayColor);
 }
 mat-icon.add
 {
+    cursor: pointer;
     color: var(--primaryColor);
 }

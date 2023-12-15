@@ -42,12 +42,16 @@ export class AuthService {
   // Logout
   logout() 
   {
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('user_id');
     localStorage.removeItem('logado');
     this.router.navigate(['login']);
   }
   // Login
   logar(user: any) 
   {
+    localStorage.setItem('user_name', user.user_name)
+    localStorage.setItem('user_id', user.id)
     localStorage.setItem('logado', user.perfil);
     this.router.navigate(['home']);
   }

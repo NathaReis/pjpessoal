@@ -6,4 +6,5 @@ export interface User
     last_name: string,
     password: string,
     perfil: string,
+    departamentos?: Array<{id: string, name: string}>,
 }

@@ -14,7 +14,7 @@ export class DataService {
   // add user
   addUser(user: User)
   {
-    //user.id = this.afs.createId();
+    user.id = this.afs.createId();
     return this.afs.collection('/users').add(user);
   }
   // get all users
@@ -34,11 +34,9 @@ export class DataService {
     return this.afs.doc(`/users/${id}`).delete();
   }
   // update user
-  updateUser(user: User, id: string)
+  async updateUser(user: User, id: string)
   {
-    this.addUser(user);
-    this.deleteUser(id);
-    //this.addUser(user);
+    this.afs.doc(`users/${id}`).update(user);
   }
 
   //PERFIL

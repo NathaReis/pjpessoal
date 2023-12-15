@@ -19,15 +19,6 @@
                           <label for="exampleInputPassword1" class="form-label">Password</label>
                           <input type="password" class="form-control" name="password" [(ngModel)]="password">
                         </div>
-
-                        <mat-form-field>
-                          <mat-label>Perfil</mat-label>
-                          <mat-select  name="perfil" [(ngModel)]="perfil">
-                            <mat-option value="" selected>Escolha um perfil</mat-option>
-                            <mat-option value="associado">Associado</mat-option>
-                            <mat-option value="editor">Editor</mat-option>
-                          </mat-select>
-                        </mat-form-field>
                         
                         <button type="button" class="btn" (click)="addUser()">Adicionar</button>
                       </form>
